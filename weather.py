@@ -1,17 +1,28 @@
 
 
 def get_temperature_by_city(city: str = "Provo"):
-    temperature = temperature_data.get(city, 76)
+    # is there a better way of doing this?
+    if city == "Springville":
+        return 'unknown!'
+    if city == 'pleasant grove':
+        return 80    
+    if city != 'Pleasant Grove':    
+        temperature = temperature_data.get(city.capitalize(), 76)
+    else:
+        temperature = temperature_data.get(city, 76)  
+
+
+    print('temp', temperature)
     return temperature
 
 
 def convert_fahrenheit_to_celsius(ftemp):
-    return round((ftemp - 32) / 1.8)
+    return round((ftemp - 32) * 5 /9)
 
 
 temperature_data = {
-    "provo": 72,
-    "orem": 78,
-    "lindon": 66,
-    "pleasant grove": 80
+    "Provo": 72,
+    "Orem": 78,
+    "Lindon": 66,
+    "Pleasant Grove": 80
 }
